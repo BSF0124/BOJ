@@ -11,7 +11,6 @@ int main(void)
 
     cin >> n;
     for(int i = 0; i < n; i++) cin >> arr[i];
-    sort(arr, arr+n);
 
     int st = 0, ans_st = 0;
     int en = n-1, ans_en = n-1;
