@@ -2,7 +2,7 @@
 using namespace std;
 
 int n;
-vector<int> v;
+vector<int> lis;
 
 int main(void) 
 {
@@ -12,15 +12,16 @@ int main(void)
     cin >> n;
     for(int i = 0; i < n; i++)
     {
-        int tmp;
-        cin >> tmp;
+        int num;
+        cin >> num;
 
-        if(v.empty() || tmp > v.back()) v.push_back(tmp);
+        if(lis.empty() || num > lis.back()) 
+            lis.push_back(num);
         else
         {
-            int idx = lower_bound(v.begin(), v.end(), tmp) - v.begin();
-            v[idx] = tmp;
+            int idx = lower_bound(lis.begin(), lis.end(), num) - lis.begin();
+            lis[idx] = num;
         }
     }
-    cout << v.size();
+    cout << lis.size();
 }
