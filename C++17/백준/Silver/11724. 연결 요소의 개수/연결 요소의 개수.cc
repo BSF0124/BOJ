@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, m;
-vector<int> adj[1005];
-bool vis[1005];
+int n, m, u, v;
+vector<int> adj[1002];
+bool vis[1002];
 
 int main(void)
 {
@@ -13,33 +13,31 @@ int main(void)
     cin >> n >> m;
     while(m--)
     {
-        int u, v;
         cin >> u >> v;
         adj[u].push_back(v);
         adj[v].push_back(u);
     }
 
-    int num = 0;
+    int ans = 0;
     for(int i = 1; i <= n; i++)
     {
         if(vis[i]) continue;
-        num++;
-        queue<int> q;
-        q.push(i);
-        vis[i] = 1;
-        while(!q.empty())
-        {
-            int cur = q.front();
-            q.pop();
 
+        stack<int> s;
+        s.push(i);
+        vis[i] = 1;
+        ans++;
+
+        while(!s.empty())
+        {
+            int cur = s.top(); s.pop();
             for(auto nxt : adj[cur])
             {
                 if(vis[nxt]) continue;
-                q.push(nxt);
+                s.push(nxt);
                 vis[nxt] = 1;
             }
         }
     }
-
-    cout << num;
+    cout << ans;
 }
