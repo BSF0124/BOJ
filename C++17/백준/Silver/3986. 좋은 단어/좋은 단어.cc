@@ -16,20 +16,10 @@ int main(void)
         stack<char> s;
         for(auto c : str)
         {
-            if(c == 'A')
-            {
-                if(s.empty() || s.top() != 'A') s.push(c);
-                else s.pop();
-            }
-            else
-            {
-                if(s.empty() || s.top() != 'B') s.push(c);
-                else s.pop();
-            }
+            if(s.empty() || s.top() != c) s.push(c);
+            else s.pop();
         }
-
         ans += s.size() == 0;
     }
-
     cout << ans;
 }
