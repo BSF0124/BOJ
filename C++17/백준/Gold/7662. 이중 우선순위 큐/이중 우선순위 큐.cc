@@ -1,27 +1,29 @@
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> 
 using namespace std;
 
-int t,k,n;
-char ch;
-
-int main(void) 
+int main() 
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
 
+    int t;
     cin >> t;
     while(t--)
     {
         multiset<int> ms;
+        int k;
         cin >> k;
         while(k--)
         {
+            char ch;
+            int n;
             cin >> ch >> n;
-            if(ch == 'I') ms.insert(n);
+            if(ch == 'I')
+                ms.insert(n);
             else
             {
                 if(ms.empty()) continue;
-                if(n == 1) ms.erase(prev(ms.end()));
+                else if(n == 1) ms.erase(prev(ms.end()));
                 else ms.erase(ms.begin());
             }
         }
